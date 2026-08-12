@@ -7,6 +7,13 @@
       name="description"
       content="Chadrick is a marketing strategist and creative professional focused on content, branding, and digital growth."
     />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme || preferredTheme;
+      })();
+    </script>
     <title>Chadrick | Marketing Strategist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,6 +36,12 @@
           <li><a href="#work">Work</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-label="Switch to night mode" title="Switch theme">
+              <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
+              <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8 8 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path></svg>
+            </button>
+          </li>
           <li><a href="#contact" class="nav-cta">Inquire Now</a></li>
         </ul>
       </nav>
@@ -145,94 +158,89 @@
         </div>
 
         <div class="work-grid">
-          <button class="work-card featured-card" type="button" data-project="apparel" aria-haspopup="dialog">
+          <a class="work-card featured-card" href="project.html?category=apparel">
+            <span class="work-visual">
+              <img class="work-image work-image-primary" src="assets/projects/apparel/main.webp" alt="Clothing and apparel design preview" loading="lazy" decoding="async" />
+              <img class="work-image work-image-secondary" src="assets/projects/apparel/detail-01.webp" alt="More clothing and apparel artwork" loading="lazy" decoding="async" />
+            </span>
             <span class="card-number">01</span>
             <span class="work-card-copy">
               <span class="work-type">Brand &amp; Campaign</span>
               <span class="work-title">Clothing &amp; apparel</span>
-              <span class="work-summary">Brand-focused concepts and campaign visuals made to stand apart.</span>
             </span>
             <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </a>
 
-          <button class="work-card teal-card" type="button" data-project="social" aria-haspopup="dialog">
+          <a class="work-card teal-card" href="project.html?category=social">
+            <span class="work-visual">
+              <img class="work-image work-image-primary" src="assets/projects/social-media/social-01.webp" alt="Social media content preview" loading="lazy" decoding="async" />
+              <img class="work-image work-image-secondary" src="assets/projects/social-media/social-31.webp" alt="More social media content" loading="lazy" decoding="async" />
+            </span>
             <span class="card-number">02</span>
             <span class="work-card-copy">
               <span class="work-type">Digital Content</span>
               <span class="work-title">Social media</span>
-              <span class="work-summary">Curated content systems designed to engage and convert.</span>
             </span>
             <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </a>
 
-          <button class="work-card coral-card" type="button" data-project="signage" aria-haspopup="dialog">
+          <a class="work-card coral-card" href="project.html?category=signage">
+            <span class="work-visual">
+              <img class="work-image work-image-primary" src="assets/projects/signages/2.webp" alt="Signage and print design preview" loading="lazy" decoding="async" />
+              <img class="work-image work-image-secondary" src="assets/projects/signages/15.webp" alt="More signage and print work" loading="lazy" decoding="async" />
+            </span>
             <span class="card-number">03</span>
             <span class="work-card-copy">
-              <span class="work-type">Environmental</span>
-              <span class="work-title">Signages</span>
-              <span class="work-summary">Clear visual communication that builds brand visibility.</span>
+              <span class="work-type">Environmental &amp; Print</span>
+              <span class="work-title">Signage, print &amp; merchandise</span>
             </span>
             <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </a>
 
-          <button class="work-card light-card" type="button" data-project="brochures" aria-haspopup="dialog">
+          <a class="work-card light-card" href="project.html?category=brochures">
+            <span class="work-visual work-visual-placeholder brochure-preview" aria-hidden="true">
+              <span class="brochure-page brochure-page-left"></span>
+              <span class="brochure-page brochure-page-right"></span>
+            </span>
             <span class="card-number">04</span>
             <span class="work-card-copy">
               <span class="work-type">Print</span>
               <span class="work-title">Brochures</span>
-              <span class="work-summary">Structured collateral designed to inform and persuade.</span>
             </span>
             <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </a>
 
-          <button class="work-card wide-card navy-card" type="button" data-project="video" aria-haspopup="dialog">
+          <a class="work-card wide-card navy-card" href="project.html?category=video">
+            <span class="work-visual work-visual-placeholder video-preview" aria-hidden="true">
+              <span class="video-frame"><span class="play-mark"></span></span>
+              <span class="video-timeline"></span>
+            </span>
             <span class="card-number">05</span>
             <span class="work-card-copy">
               <span class="work-type">Motion &amp; Story</span>
               <span class="work-title">Long &amp; short-form video</span>
-              <span class="work-summary">Story-driven content built for attention, clarity, and impact.</span>
             </span>
             <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </a>
 
-          <button class="work-card light-card" type="button" data-project="digital" aria-haspopup="dialog">
+          <a class="work-card light-card" href="project.html?category=digital">
+            <span class="work-visual work-visual-placeholder digital-preview" aria-hidden="true">
+              <span class="browser-frame">
+                <span class="browser-bar"></span>
+                <span class="browser-copy"></span>
+                <span class="browser-button"></span>
+              </span>
+              <span class="phone-frame"></span>
+            </span>
             <span class="card-number">06</span>
             <span class="work-card-copy">
               <span class="work-type">Digital Experience</span>
               <span class="work-title">Email &amp; landing pages</span>
-              <span class="work-summary">Conversion-focused experiences with clear messaging and flow.</span>
             </span>
             <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </a>
         </div>
       </section>
-
-      <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-title">
-        <div class="project-view">
-          <header class="project-view-header">
-            <a href="#home" class="logo">CHADRICK<span>.</span></a>
-            <button class="project-close" type="button" aria-label="Close project view">
-              Close <span aria-hidden="true">&times;</span>
-            </button>
-          </header>
-
-          <div class="project-view-content">
-            <div class="project-intro">
-              <p class="project-number" id="project-number"></p>
-              <p class="project-type" id="project-type"></p>
-              <h2 id="project-title"></h2>
-              <p class="project-description" id="project-description"></p>
-            </div>
-
-            <div class="project-gallery" id="project-gallery"></div>
-            <div class="project-details" id="project-details"></div>
-
-            <button class="project-back" type="button">
-              <span aria-hidden="true">&larr;</span> Back to Selected Work
-            </button>
-          </div>
-        </div>
-      </dialog>
 
       <section id="experience" class="section-block experience-section">
         <div class="section-heading">
@@ -286,6 +294,7 @@
       <a href="#home" class="back-to-top">Back to top &uarr;</a>
     </footer>
 
+    <script src="theme.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
