@@ -14,11 +14,11 @@
         document.documentElement.dataset.theme = savedTheme || preferredTheme;
       })();
     </script>
-    <title>Chadrick | Marketing Strategist</title>
+    <title>Chadrick    asdasd   | Marketing Strategist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -31,15 +31,28 @@
       <nav class="navbar" aria-label="Primary navigation">
         <a href="#home" class="logo">CHADRICK<span>.</span></a>
 
-        <ul class="nav-links">
+        <button
+          class="mobile-menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-menu"
+        >
+          <span>Menu</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 8h16M4 16h16"></path>
+          </svg>
+        </button>
+
+        <ul class="nav-links" id="primary-menu">
           <li><a href="#about">About</a></li>
           <li><a href="#work">Work</a></li>
-          <li><a href="#experience">Experience</a></li>
+          <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
             <button class="theme-toggle" type="button" aria-label="Switch to night mode" title="Switch theme">
               <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
               <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8 8 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path></svg>
+              <span class="theme-toggle-label">Switch theme</span>
             </button>
           </li>
           <li><a href="#contact" class="nav-cta">Inquire Now</a></li>
@@ -50,9 +63,18 @@
     <main id="main-content">
       <section id="home" class="hero">
         <div class="hero-intro">
-          <p class="hero-greeting">Hello, my name is</p>
+          <p class="hero-greeting">Hi, my name is</p>
           <h1>Chadrick David</h1>
           <p class="hero-role">Marketing Specialist <span aria-hidden="true">/</span> Graphic Designer</p>
+          <div class="hero-actions">
+            <a href="#work" class="resume-button">View my work <span aria-hidden="true">&darr;</span></a>
+            <a
+              href="assets/documents/CHADRICK DAVID_RESUME.pdf"
+              class="resume-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >View resume <span aria-hidden="true">&nearr;</span></a>
+          </div>
           <div class="hero-socials" aria-label="Social links">
             <a
               href="https://www.linkedin.com/in/chadrick-david-716962284/"
@@ -92,18 +114,6 @@
               </svg>
             </a>
           </div>
-          <a
-            href="assets/documents/CHADRICK DAVID_RESUME.pdf"
-            class="resume-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Resume
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17 17 7"></path>
-              <path d="M8 7h9v9"></path>
-            </svg>
-          </a>
         </div>
 
         <figure class="portrait-frame">
@@ -118,31 +128,23 @@
       <section id="about" class="section-block about-section">
         <div class="section-heading">
           <p class="section-tag">01 / About</p>
-          <h2>Design and marketing, built to work together.</h2>
+          <h2>Design and marketing, working together.</h2>
         </div>
 
         <div class="about-grid">
           <div class="about-copy">
             <p class="lead">
-              I&rsquo;m a graphic designer and marketing specialist working across
-              design, social media, video, email marketing, websites, and digital
-              campaigns.
-            </p>
-            <p>
-              I handle both the creative and execution side, from designing and
-              editing to managing content and keeping projects moving.
+              I work across graphic design, content, and digital marketing&mdash;from early ideas through final delivery.
             </p>
           </div>
 
           <div class="capability-wrap">
-            <p class="list-label">Core capabilities</p>
+            <p class="list-label">What I can handle</p>
             <ul class="capabilities">
-              <li><span>01</span> Graphic Design</li>
-              <li><span>02</span> Social Media</li>
-              <li><span>03</span> Content Creation</li>
-              <li><span>04</span> Video Editing</li>
-              <li><span>05</span> Email &amp; SMS Marketing</li>
-              <li><span>06</span> Website &amp; SEO</li>
+              <li><span>01</span> Brand &amp; Graphic Design</li>
+              <li><span>02</span> Social Content &amp; Campaigns</li>
+              <li><span>03</span> Video &amp; Digital Creative</li>
+              <li><span>04</span> Email, Web &amp; SEO</li>
             </ul>
           </div>
         </div>
@@ -152,9 +154,9 @@
         <div class="section-heading work-heading">
           <div>
             <p class="section-tag">02 / Selected work</p>
-            <h2>Built to be seen.<br /><em>Made to connect.</em></h2>
+            <h2>Selected work.</h2>
           </div>
-          <p>A selection of work across strategy, content, and visual communication.</p>
+          <p>A selection of projects across apparel, social media, print, signage, and branded spaces.</p>
         </div>
 
         <div class="work-grid">
@@ -197,93 +199,128 @@
             <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
           </a>
 
-          <a class="work-card light-card" href="project.html?category=brochures">
-            <span class="work-visual work-visual-placeholder brochure-preview" aria-hidden="true">
-              <span class="brochure-page brochure-page-left"></span>
-              <span class="brochure-page brochure-page-right"></span>
-            </span>
-            <span class="card-number">04</span>
-            <span class="work-card-copy">
-              <span class="work-type">Print</span>
-              <span class="work-title">Brochures</span>
-            </span>
-            <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </a>
+        </div>
 
-          <a class="work-card wide-card navy-card" href="project.html?category=video">
-            <span class="work-visual work-visual-placeholder video-preview" aria-hidden="true">
-              <span class="video-frame"><span class="play-mark"></span></span>
-              <span class="video-timeline"></span>
-            </span>
-            <span class="card-number">05</span>
-            <span class="work-card-copy">
-              <span class="work-type">Motion &amp; Story</span>
-              <span class="work-title">Long &amp; short-form video</span>
-            </span>
-            <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </a>
-
-          <a class="work-card light-card" href="project.html?category=digital">
-            <span class="work-visual work-visual-placeholder digital-preview" aria-hidden="true">
-              <span class="browser-frame">
-                <span class="browser-bar"></span>
-                <span class="browser-copy"></span>
-                <span class="browser-button"></span>
-              </span>
-              <span class="phone-frame"></span>
-            </span>
-            <span class="card-number">06</span>
-            <span class="work-card-copy">
-              <span class="work-type">Digital Experience</span>
-              <span class="work-title">Email &amp; landing pages</span>
-            </span>
-            <span class="view-work">View work <span aria-hidden="true">&rarr;</span></span>
-          </a>
+        <div class="more-capabilities" aria-label="Additional creative capabilities">
+          <p>Also working across</p>
+          <ul>
+            <li>Brochure design</li>
+            <li>Video editing</li>
+            <li>Email campaigns</li>
+            <li>Landing pages</li>
+          </ul>
         </div>
       </section>
 
-      <section id="experience" class="section-block experience-section">
+      <section id="services" class="section-block experience-section">
         <div class="section-heading">
-          <p class="section-tag">03 / Experience</p>
-          <h2>From strategy to <em>execution.</em></h2>
+          <p class="section-tag">03 / How I help</p>
+          <h2>How I work.</h2>
         </div>
 
-        <div class="timeline">
-          <article class="experience-item">
-            <p class="experience-number">01</p>
-            <div class="experience-meta">
-              <h3>Marketing &amp; Creative Professional</h3>
-              <span>Freelance / Contract</span>
-            </div>
-            <p>Developing content strategies, creative direction, and campaigns for brands seeking stronger visibility, engagement, and presence.</p>
-          </article>
+        <div class="services-layout">
+          <figure class="services-visual">
+            <img
+              src="assets/images/how-i-help-visual.jpg"
+              alt="Editorial creative process showing strategy, design development, and launch"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption><span>Strategy</span><span>Create</span><span>Launch</span></figcaption>
+          </figure>
 
-          <article class="experience-item">
-            <p class="experience-number">02</p>
-            <div class="experience-meta">
-              <h3>Brand &amp; Content Strategist</h3>
-              <span>Project-Based Roles</span>
-            </div>
-            <p>Translating business goals into clear messaging, content systems, and brand experiences that feel consistent and persuasive.</p>
-          </article>
+          <div class="timeline">
+            <article class="experience-item">
+              <p class="experience-number">01</p>
+              <div class="experience-meta">
+                <h3>Find the direction</h3>
+                <span>Strategy</span>
+              </div>
+              <p>Clarify the message, audience, and visual direction.</p>
+            </article>
 
-          <article class="experience-item">
-            <p class="experience-number">03</p>
-            <div class="experience-meta">
-              <h3>Creative &amp; Marketing Support</h3>
-              <span>Cross-Functional Experience</span>
-            </div>
-            <p>Supporting visual storytelling, social media planning, publishing, and campaign rollout across brand and communication initiatives.</p>
-          </article>
+            <article class="experience-item">
+              <p class="experience-number">02</p>
+              <div class="experience-meta">
+                <h3>Make it memorable</h3>
+                <span>Create</span>
+              </div>
+              <p>Design the content, campaign, or brand experience.</p>
+            </article>
+
+            <article class="experience-item">
+              <p class="experience-number">03</p>
+              <div class="experience-meta">
+                <h3>Get it out there</h3>
+                <span>Launch</span>
+              </div>
+              <p>Prepare, publish, and keep every touchpoint consistent.</p>
+            </article>
+          </div>
         </div>
       </section>
 
       <section id="contact" class="contact-section">
         <div class="contact-inner">
-          <p class="section-tag">04 / Let&rsquo;s work together</p>
-          <h2>Have a project in mind?<br /><em>Let&rsquo;s make it matter.</em></h2>
-          <p>Available for freelance projects, brand collaborations, and marketing partnerships.</p>
-          <a href="mailto:csdavidgd@gmail.com" class="button contact-button">Send an inquiry <span aria-hidden="true">&nearr;</span></a>
+          <div class="contact-copy">
+            <p class="section-tag">04 / Get in touch</p>
+            <h2>Tell me about your project.</h2>
+            <p>Share a few details and I&rsquo;ll get back to you by email.</p>
+            <a class="contact-email" href="mailto:csdavidgd@gmail.com">csdavidgd@gmail.com</a>
+          </div>
+
+          <form
+            class="inquiry-form"
+            id="inquiry-form"
+            action="https://formsubmit.co/ajax/csdavidgd@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New inquiry from Chadrick's portfolio" />
+            <input type="hidden" name="_template" value="table" />
+            <label class="form-honeypot" aria-hidden="true">
+              Leave this field empty
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <div class="form-row">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+            </div>
+
+            <label>
+              <span>What can I help with?</span>
+              <select name="inquiry_type" required>
+                <option value="" selected disabled>Select one</option>
+                <option>Graphic design</option>
+                <option>Social media content</option>
+                <option>Marketing support</option>
+                <option>Video editing</option>
+                <option>Email or website</option>
+                <option>Something else</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Comments or inquiry</span>
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Tell me a little about your project, timeline, or what you need help with."
+                required
+              ></textarea>
+            </label>
+
+            <div class="form-footer">
+              <button class="button contact-button" type="submit">Send inquiry <span aria-hidden="true">&nearr;</span></button>
+              <p class="form-status" id="form-status" aria-live="polite"></p>
+            </div>
+          </form>
         </div>
       </section>
     </main>

@@ -114,7 +114,7 @@ const projectData = {
   },
 };
 
-const projectOrder = Object.keys(projectData);
+const projectOrder = ["apparel", "social", "signage"];
 const requestedCategory = new URLSearchParams(window.location.search).get("category");
 const category = projectData[requestedCategory] ? requestedCategory : "apparel";
 const project = projectData[category];

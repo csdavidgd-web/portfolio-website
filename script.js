@@ -1,5 +1,40 @@
 const currentYear = document.querySelector("#current-year");
 
+const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+const primaryMenu = document.querySelector("#primary-menu");
+
+if (mobileMenuToggle && primaryMenu) {
+  const closeMobileMenu = () => {
+    mobileMenuToggle.setAttribute("aria-expanded", "false");
+    primaryMenu.classList.remove("is-open");
+  };
+
+  mobileMenuToggle.addEventListener("click", () => {
+    const willOpen = mobileMenuToggle.getAttribute("aria-expanded") !== "true";
+    mobileMenuToggle.setAttribute("aria-expanded", String(willOpen));
+    primaryMenu.classList.toggle("is-open", willOpen);
+  });
+
+  primaryMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".navbar")) closeMobileMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMobileMenu();
+      mobileMenuToggle.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 640) closeMobileMenu();
+  });
+}
+
 if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
 }
@@ -18,7 +53,7 @@ if (portraitImage) {
 
 const setupScrollReveals = () => {
   const revealItems = document.querySelectorAll(
-    ".section-heading, .about-copy, .capability-wrap, .work-card, .experience-item, .contact-inner > *, footer > *"
+    ".section-heading, .about-copy, .capability-wrap, .work-card, .more-capabilities, .services-visual, .experience-item, .contact-inner > *, footer > *"
   );
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -43,3 +78,40 @@ const setupScrollReveals = () => {
 };
 
 setupScrollReveals();
+
+const inquiryForm = document.querySelector("#inquiry-form");
+const formStatus = document.querySelector("#form-status");
+
+if (inquiryForm && formStatus) {
+  inquiryForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitButton = inquiryForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    formStatus.textContent = "";
+    formStatus.className = "form-status";
+
+    try {
+      const response = await fetch(inquiryForm.action, {
+        method: "POST",
+        body: new FormData(inquiryForm),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
+      inquiryForm.reset();
+      formStatus.textContent = "Thanks—your inquiry has been sent. I’ll get back to you soon.";
+      formStatus.classList.add("is-success");
+    } catch (error) {
+      formStatus.textContent = "The form couldn’t send right now. Please email me directly at csdavidgd@gmail.com.";
+      formStatus.classList.add("is-error");
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalButtonText;
+    }
+  });
+}
