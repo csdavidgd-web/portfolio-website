@@ -56,6 +56,8 @@ const projectData = {
       ["assets/projects/social-media/social-33.webp", "Social media project 33"],
       ["assets/projects/social-media/social-34.webp", "Social media project 34"],
       ["assets/projects/social-media/social-35.webp", "Social media project 35"],
+      ["assets/projects/social-media/Storer%20Tips.jpg", "Storer social media tips campaign graphic"],
+      ["assets/projects/social-media/Email%20Blast%20Dusting%20Service.jpg", "Dusting service email blast campaign graphic"],
     ],
   },
   signage: {
@@ -85,36 +87,29 @@ const projectData = {
       "assets/projects/signages/21.webp",
     ],
   },
-  brochures: {
-    number: "04",
-    type: "Print Design",
-    title: "Brochures",
-    description: "Brochure layouts and marketing collateral designed for clarity.",
-    role: "Graphic Design, Layout, Production Preparation",
-    tools: "InDesign, Photoshop, Illustrator, Canva",
-    placeholders: ["Full brochure", "Cover", "Interior spread", "Interior spread", "Mockup"],
-  },
   video: {
-    number: "05",
+    number: "04",
     type: "Motion & Story",
-    title: "Long & Short-Form Video",
-    description: "Story-driven video content built for attention and clarity.",
+    title: "Video Editing",
+    description: "Short-form video, campaign content, and social edits built to capture attention.",
     role: "Video Editing, Content Creation, Creative Direction",
     tools: "Premiere Pro, CapCut, After Effects, Canva",
-    placeholders: ["Long-form video", "Short-form reel", "Short-form reel", "Short-form reel"],
-  },
-  digital: {
-    number: "06",
-    type: "Digital Experience",
-    title: "Email & Landing Pages",
-    description: "Design, copy, layout, and campaign execution.",
-    role: "Design, Copy, Layout, Campaign Execution",
-    tools: "Canva, Figma, Klaviyo, WordPress",
-    placeholders: ["Campaign overview", "Email design", "Email design", "Desktop landing page", "Mobile landing page"],
+    videos: [
+      ["assets/projects/videos/Keep%20100_%20Commission!.mp4", "Keep 100% Commission"],
+      ["assets/projects/videos/meme%20run.mp4", "Meme Run"],
+      ["assets/projects/videos/realtor.mp4", "Realtor"],
+      ["assets/projects/videos/Halo.mp4", "Halo"],
+      ["assets/projects/videos/rows.mp4", "Rows"],
+      ["assets/projects/videos/Storer%20Milestone.mp4", "Storer Milestone"],
+      ["assets/projects/videos/More%20Jocelyn.mp4", "More Jocelyn"],
+      ["assets/projects/videos/Aura%20Farm.mp4", "Aura Farm"],
+      ["assets/projects/videos/Twerk%20business%20meme.mp4", "Twerk Business"],
+      ["assets/projects/videos/Newport%20City.mp4", "Newport City"],
+    ],
   },
 };
 
-const projectOrder = ["apparel", "social", "signage"];
+const projectOrder = ["apparel", "social", "signage", "video"];
 const requestedCategory = new URLSearchParams(window.location.search).get("category");
 const category = projectData[requestedCategory] ? requestedCategory : "apparel";
 const project = projectData[category];
@@ -129,7 +124,23 @@ document.querySelector("#case-tools").textContent = project.tools;
 
 const moodboard = document.querySelector("#moodboard");
 
-if (project.sections) {
+if (project.videos) {
+  moodboard.classList.add("video-gallery");
+  moodboard.innerHTML = project.videos
+    .map(
+      ([src, title], index) => `
+        <figure class="video-item ${index === 0 || index === 5 ? "is-landscape" : ""}">
+          <span class="moodboard-index">${String(index + 1).padStart(2, "0")}</span>
+          <video controls playsinline preload="metadata" aria-label="${title}">
+            <source src="${src}" type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
+          <figcaption>${title}</figcaption>
+        </figure>
+      `
+    )
+    .join("");
+} else if (project.sections) {
   moodboard.classList.add("is-sectioned");
   let imageNumber = 0;
 
@@ -243,7 +254,7 @@ if (currentYear) currentYear.textContent = new Date().getFullYear();
 
 const setupProjectReveals = () => {
   const revealItems = document.querySelectorAll(
-    ".case-heading > *, .case-meta > *, .moodboard-item, .gallery-group-header, .curated-item, .case-footer-nav > *, footer > *"
+    ".case-heading > *, .case-meta > *, .moodboard-item, .video-item, .gallery-group-header, .curated-item, .case-footer-nav > *, footer > *"
   );
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

@@ -39,6 +39,32 @@ if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
 }
 
+document.querySelectorAll(".tool-logo img").forEach((logo) => {
+  const showLogoFallback = () => logo.remove();
+
+  logo.addEventListener("error", showLogoFallback, { once: true });
+
+  if (logo.complete && logo.naturalWidth === 0) {
+    showLogoFallback();
+  }
+});
+
+const toolsSection = document.querySelector(".tools-platforms");
+const toolsToggle = document.querySelector(".tools-toggle");
+
+if (toolsSection && toolsToggle) {
+  toolsSection.classList.add("is-condensed");
+  toolsToggle.hidden = false;
+
+  toolsToggle.addEventListener("click", () => {
+    const isExpanded = toolsSection.classList.toggle("is-expanded");
+    toolsToggle.setAttribute("aria-expanded", String(isExpanded));
+    toolsToggle.querySelector("span:first-child").textContent = isExpanded
+      ? "Show fewer tools"
+      : "View all tools";
+  });
+}
+
 const portraitImage = document.querySelector(".portrait-image");
 
 if (portraitImage) {
@@ -53,7 +79,7 @@ if (portraitImage) {
 
 const setupScrollReveals = () => {
   const revealItems = document.querySelectorAll(
-    ".section-heading, .about-copy, .capability-wrap, .work-card, .more-capabilities, .services-visual, .experience-item, .contact-inner > *, footer > *"
+    ".section-heading, .about-copy, .capability-wrap, .tools-platforms-heading, .tool-group, .work-card, .more-capabilities, .services-visual, .experience-item, .contact-inner > *, footer > *"
   );
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
