@@ -85,8 +85,7 @@ const setupScrollReveals = () => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   revealItems.forEach((item, index) => {
-    item.classList.add("scroll-reveal");
-    item.style.setProperty("--reveal-delay", `${(index % 4) * 70}ms`);
+    item.classList.add("scroll-reveal", `reveal-delay-${index % 4}`);
   });
 
   const revealObserver = new IntersectionObserver(

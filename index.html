@@ -4,17 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action https://formsubmit.co; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'none'; font-src https://fonts.gstatic.com; img-src 'self' data: https://drive.google.com https://*.googleusercontent.com; media-src 'self'; frame-src https://drive.google.com; connect-src https://formsubmit.co; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta
       name="description"
       content="Chadrick is a marketing strategist and creative professional focused on content, branding, and digital growth."
     />
-    <script>
-      (() => {
-        const savedTheme = localStorage.getItem("portfolio-theme");
-        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        document.documentElement.dataset.theme = savedTheme || preferredTheme;
-      })();
-    </script>
-    <title>Chadrick    asdasd   | Marketing Strategist</title>
+    <script src="theme-init.js"></script>
+    <title>Chadrick.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -263,9 +262,7 @@
 
           <a class="work-card navy-card" href="project.html?category=video">
             <span class="work-visual video-card-preview" aria-hidden="true">
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="assets/projects/videos/Keep%20100_%20Commission!.mp4" type="video/mp4" />
-              </video>
+              <img src="assets/projects/videos/keep-commission-poster.png" alt="" loading="lazy" decoding="async" />
               <span class="video-preview-play"></span>
             </span>
             <span class="card-number">04</span>
@@ -361,11 +358,11 @@
             <div class="form-row">
               <label>
                 <span>Name</span>
-                <input type="text" name="name" autocomplete="name" required />
+                <input type="text" name="name" autocomplete="name" maxlength="100" required />
               </label>
               <label>
                 <span>Email</span>
-                <input type="email" name="email" autocomplete="email" required />
+                <input type="email" name="email" autocomplete="email" maxlength="254" required />
               </label>
             </div>
 
@@ -387,6 +384,7 @@
               <textarea
                 name="message"
                 rows="5"
+                maxlength="4000"
                 placeholder="Tell me a little about your project, timeline, or what you need help with."
                 required
               ></textarea>

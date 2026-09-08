@@ -96,15 +96,14 @@ const projectData = {
     tools: "Premiere Pro, CapCut, After Effects, Canva",
     videos: [
       ["assets/projects/videos/Keep%20100_%20Commission!.mp4", "Keep 100% Commission"],
-      ["assets/projects/videos/meme%20run.mp4", "Meme Run"],
-      ["assets/projects/videos/realtor.mp4", "Realtor"],
-      ["assets/projects/videos/Halo.mp4", "Halo"],
-      ["assets/projects/videos/rows.mp4", "Rows"],
-      ["assets/projects/videos/Storer%20Milestone.mp4", "Storer Milestone"],
-      ["assets/projects/videos/More%20Jocelyn.mp4", "More Jocelyn"],
-      ["assets/projects/videos/Aura%20Farm.mp4", "Aura Farm"],
-      ["assets/projects/videos/Twerk%20business%20meme.mp4", "Twerk Business"],
-      ["assets/projects/videos/Newport%20City.mp4", "Newport City"],
+      ["12kAbYuU6N4gtmANwDKLzJnU9hGWnS2Bq", "Meme Run"],
+      ["1x8sUaT70C3CHUgPV8VpbiC9Wf3ZaO3Oa", "Realtor"],
+      ["17ZUOfZ9Q4vsiMl330V1YxPr_Dq47iSH4", "Halo"],
+      ["1URE6nzUSd9913D8ancCr2AojEfLMqrzd", "Rows"],
+      ["1rnXSC4nzBQ_kYO-tG1Lv9caVIlTxfAoy", "More Jocelyn"],
+      ["1BEkSIjZzzLVlebjfzGAlSvIK03ns875f", "Aura Farm"],
+      ["1XGmmmbFrD7P_eZb_rrRTusMqWgU9LLSK", "Twerk Business"],
+      ["1gZ6WLgxuPlsg40VXvaPAxRv---JEzszi", "Newport City"],
     ],
   },
 };
@@ -128,18 +127,42 @@ if (project.videos) {
   moodboard.classList.add("video-gallery");
   moodboard.innerHTML = project.videos
     .map(
-      ([src, title], index) => `
-        <figure class="video-item ${index === 0 || index === 5 ? "is-landscape" : ""}">
+      ([source, title], index) => `
+        <figure class="video-item ${index === 0 ? "is-landscape" : ""}">
           <span class="moodboard-index">${String(index + 1).padStart(2, "0")}</span>
-          <video controls playsinline preload="metadata" aria-label="${title}">
-            <source src="${src}" type="video/mp4" />
-            Your browser does not support embedded video.
-          </video>
+          ${source.startsWith("assets/")
+            ? `<div class="video-player">
+              <video controls playsinline preload="metadata" poster="assets/projects/videos/keep-commission-poster.png" aria-label="${title}">
+                <source src="${source}" type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
+            </div>`
+            : `<div class="video-player">
+              <button class="video-cover" type="button" data-video-id="${source}" data-video-title="${title}" aria-label="Play ${title}">
+                <img src="https://drive.google.com/thumbnail?id=${source}&amp;sz=w1200" alt="${title} video preview" loading="lazy" />
+                <span class="video-cover-play" aria-hidden="true"></span>
+              </button>
+            </div>`}
           <figcaption>${title}</figcaption>
         </figure>
       `
     )
     .join("");
+
+  moodboard.querySelectorAll(".video-cover").forEach((cover) => {
+    cover.addEventListener("click", () => {
+      const player = cover.closest(".video-player");
+      const videoId = cover.dataset.videoId;
+      const videoTitle = cover.dataset.videoTitle;
+
+      player.innerHTML = `<iframe
+        src="https://drive.google.com/file/d/${videoId}/preview?autoplay=1"
+        title="${videoTitle} video"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+      ></iframe>`;
+    });
+  });
 } else if (project.sections) {
   moodboard.classList.add("is-sectioned");
   let imageNumber = 0;
@@ -260,8 +283,7 @@ const setupProjectReveals = () => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   revealItems.forEach((item, index) => {
-    item.classList.add("scroll-reveal");
-    item.style.setProperty("--reveal-delay", `${(index % 4) * 65}ms`);
+    item.classList.add("scroll-reveal", `reveal-delay-${index % 4}`);
   });
 
   const revealObserver = new IntersectionObserver(

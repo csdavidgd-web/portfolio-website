@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action https://formsubmit.co; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'none'; font-src https://fonts.gstatic.com; img-src 'self' data: https://drive.google.com https://*.googleusercontent.com; media-src 'self'; frame-src https://drive.google.com; connect-src https://formsubmit.co; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests"
+    />
+    <meta name="referrer" content="no-referrer" />
     <meta name="description" content="Selected work by Chadrick David." />
-    <script>
-      (() => {
-        const savedTheme = localStorage.getItem("portfolio-theme");
-        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        document.documentElement.dataset.theme = savedTheme || preferredTheme;
-      })();
-    </script>
+    <script src="theme-init.js"></script>
     <title>Selected Work | Chadrick David</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -75,6 +74,6 @@
     </footer>
 
     <script src="theme.js"></script>
-    <script src="project-page.js"></script>
+    <script src="project-page.js?v=20260908"></script>
   </body>
 </html>
