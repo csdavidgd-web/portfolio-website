@@ -471,6 +471,21 @@
   border-top: 1px solid var(--line);
 }
 
+.curated-item.original-ratio,
+.curated-item.wide.original-ratio {
+  aspect-ratio: auto;
+  align-self: start;
+}
+
+.curated-item.original-ratio img {
+  height: auto;
+}
+
+.curated-item.packaging-lead {
+  width: calc((100% - 14px) / 2);
+  justify-self: center;
+}
+
 .case-footer-nav a {
   display: inline-flex;
   align-items: center;
@@ -532,6 +547,10 @@
 
   .gallery-group-grid {
     gap: 8px;
+  }
+
+  .curated-item.packaging-lead {
+    width: 100%;
   }
 
   .curated-item.wide {

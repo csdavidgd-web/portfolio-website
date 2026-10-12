@@ -108,7 +108,37 @@ const projectData = {
   },
 };
 
-const projectOrder = ["apparel", "social", "signage", "video"];
+projectData.packaging = {
+  number: "05",
+  type: "Brand & Packaging",
+  title: "Packaging Design",
+  description: "Classic Snax beef sticks packaging, with five color variations, product mockups, and a promotional banner.",
+  role: "Graphic Design, Packaging Design",
+  sections: [
+    {
+      title: "Classic Snax",
+      description: "A look at the beef sticks range and its packaging.",
+      images: [
+        {
+          src: "assets/projects/Packaging/Banner/1.webp",
+          alt: "Classic Snax beef sticks promotional banner with five packaging colors",
+          layout: "wide original-ratio",
+        },
+      ],
+    },
+    ...["Black", "Blue", "Green", "Red", "Yellow"].map((color) => ({
+      title: `${color} collection`,
+      description: `Packaging and product visuals in the ${color.toLowerCase()} color variation.`,
+      images: Array.from({ length: 5 }, (_, index) => ({
+        src: `assets/projects/Packaging/${color}/${index + 1}.png`,
+        alt: `Classic Snax ${color.toLowerCase()} packaging, view ${index + 1}`,
+        layout: index === 0 ? "wide original-ratio packaging-lead" : "original-ratio",
+      })),
+    })),
+  ],
+};
+
+const projectOrder = ["apparel", "social", "signage", "video", "packaging"];
 const requestedCategory = new URLSearchParams(window.location.search).get("category");
 const category = projectData[requestedCategory] ? requestedCategory : "apparel";
 const project = projectData[category];
@@ -119,7 +149,9 @@ document.querySelector("#case-type").textContent = project.type;
 document.querySelector("#case-title").textContent = project.title;
 document.querySelector("#case-description").textContent = project.description;
 document.querySelector("#case-role").textContent = project.role;
-document.querySelector("#case-tools").textContent = project.tools;
+const projectTools = document.querySelector("#case-tools");
+projectTools.textContent = project.tools || "";
+projectTools.parentElement.hidden = !project.tools;
 
 const moodboard = document.querySelector("#moodboard");
 
